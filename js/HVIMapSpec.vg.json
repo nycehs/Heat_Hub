@@ -1,0 +1,162 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "autosize": {"type": "fit", "contains": "padding"},
+    "background": "white",
+    "padding": 5,
+    "style": "cell",
+    "data": [
+      {"name": "highlight_store"},
+      {"name": "source_1", "url": "./data/HVI_DATA.csv", "format": {"type": "csv"}},
+      {
+        "name": "source_0",
+        "url": "https://raw.githubusercontent.com/nycehs/NYC_geography/master/NTA.topo.json",
+        "format": {"type": "topojson", "feature": "collection"},
+        "transform": [{"type": "identifier", "as": "_vgsid_"}]
+      },
+      {
+        "name": "data_0",
+        "source": "source_0",
+        "transform": [
+          {
+            "type": "lookup",
+            "from": "source_1",
+            "key": "NTACODE",
+            "fields": ["properties.NTACode"],
+            "values": ["NTACODE", "NTANAME", "HVI_RANK"],
+            "default": "no data"
+          }
+        ]
+      }
+    ],
+    "projections": [
+      {
+        "name": "projection",
+        "size": {"signal": "[width, height]"},
+        "fit": {"signal": "[data('source_0'), data('data_0')]"}
+      }
+    ],
+    "signals": [
+      {
+        "name": "width",
+        "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+        "on": [
+          {
+            "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+            "events": "window:resize"
+          }
+        ]
+      },
+      {
+        "name": "height",
+        "init": "isFinite(containerSize()[1]) ? containerSize()[1] : 200",
+        "on": [
+          {
+            "update": "isFinite(containerSize()[1]) ? containerSize()[1] : 200",
+            "events": "window:resize"
+          }
+        ]
+      },
+      {
+        "name": "unit",
+        "value": {},
+        "on": [
+          {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+        ]
+      },
+      {
+        "name": "highlight",
+        "update": "vlSelectionResolve(\"highlight_store\", \"union\")"
+      },
+      {
+        "name": "highlight_tuple",
+        "on": [
+          {
+            "events": [{"source": "scope", "type": "mouseover"}],
+            "update": "datum && item().mark.marktype !== 'group' ? {unit: \"layer_1\", fields: highlight_tuple_fields, values: [(item().isVoronoi ? datum.datum : datum)[\"_vgsid_\"]]} : null",
+            "force": true
+          },
+          {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+        ]
+      },
+      {
+        "name": "highlight_tuple_fields",
+        "value": [{"type": "E", "field": "_vgsid_"}]
+      },
+      {
+        "name": "highlight_modify",
+        "on": [
+          {
+            "events": {"signal": "highlight_tuple"},
+            "update": "modify(\"highlight_store\", highlight_tuple, true)"
+          }
+        ]
+      },
+      {
+        "name": "selectNTA",
+        "value": ""
+      }
+    ],
+    "marks": [
+      {
+        "name": "layer_0_marks",
+        "type": "shape",
+        "style": ["geoshape"],
+        "interactive": false,
+        "from": {"data": "source_0"},
+        "encode": {
+          "update": {
+            "fill": {"value": "lightgray"},
+            "stroke": {"value": "#ffffff"},
+            "ariaRoleDescription": {"value": "geoshape"}
+          }
+        },
+        "transform": [{"type": "geoshape", "projection": "projection"}]
+      },
+      {
+        "name": "layer_1_marks",
+        "type": "shape",
+        "style": ["geoshape"],
+        "interactive": true,
+        "from": {"data": "data_0"},
+        "encode": {
+          "update": {
+            "stroke": [
+                {
+                  "test": "datum.properties.NTACode==selectNTA",
+                  "value": "orange"
+                },
+                {"value": "white"}
+              ],
+            "fill": {"scale": "color", "field": "HVI_RANK"},
+            "strokeWidth": [
+              {
+                "test": "(vlSelectionTest(\"highlight_store\", datum))",
+                "value": 2
+              },{
+                "test": "datum.properties.NTACode==selectNTA",
+                "value": 3
+              },
+              {"value": 0.5}
+            ],
+            "tooltip": {
+              "signal": "{\"Neighborhood\": isValid(datum[\"NTANAME\"]) ? datum[\"NTANAME\"] : \"\"+datum[\"NTANAME\"], \"HVI score:\": format(datum[\"HVI_RANK\"], \"\")}"
+            },
+            "ariaRoleDescription": {"value": "geoshape"},
+            "description": {
+              "signal": "\"HVI_RANK\" + \": \" + (isValid(datum[\"HVI_RANK\"]) ? datum[\"HVI_RANK\"] : \"\"+datum[\"HVI_RANK\"]) + \"; \" + \"Neighborhood\" + \": \" + (isValid(datum[\"NTANAME\"]) ? datum[\"NTANAME\"] : \"\"+datum[\"NTANAME\"]) + \"; \" + \"HVI score:\" + \": \" + (format(datum[\"HVI_RANK\"], \"\"))"
+            }
+          }
+        },
+        "transform": [{"type": "geoshape", "projection": "projection"}]
+      }
+    ],
+    "scales": [
+      {
+        "name": "color",
+        "type": "ordinal",
+        "domain": {"data": "data_0", "field": "HVI_RANK", "sort": true},
+        "range": {"scheme": "redpurple", "extent": [0, 1.25]},
+        "interpolate": "hcl"
+      }
+    ]
+  }

@@ -1,27 +1,28 @@
 "use strict";
 
 // Create and initialize variables
-var nyccasData = [];
-var neighborhoodData = [];
+var hvidata = {};
+var neighborhoodData = {};
 var selectedNeighborhood = ['']; //document.querySelector("#ntaField")
-
 var selectedName = '';
-var dPM = 0;
-var dNO2 = 0;
-var dBuildingEmissions = 0;
-var dBuildingDensity = 0;
-var dTrafficDensity = 0;
-var dIndustrial = 0;
-var tabShown = 'tab-01-a'; //let tabSpec = '';
-//const trafficMapSpec = "./js/TrafficmapSpec.vl.json";    //These spec definitions were moved to a tab function
-//const industrialMapSpec = "./js/IndustrialmapSpec.vl.json";
-//const BDmapSpec = "./js/BDmapSpec.vl.json";
-//const BEmapSpec = "./js/BEmapSpec.vl.json";
 
-var PMBarSpec = "js/PMBarSpec.vl.json";
-var PMBarVGSpec = "js/PMBarSpec.vg.json";
-var NO2BarVGSpec = "js/NO2BarSpec.vg.json";
-var embed_opt = {
+// NTACODE,NTANAME,POV_PCT,PCT_BLACK_POP,GREENSPACE,SURFACETEMP,PCT_HOUSEHOLDS_AC,HVI_RANK,CD,HRI_HOSP_RATE
+
+var nCD = ""
+var nGREENSPACE = ""
+var nHRI_HOSP_RATE = ""
+var nHVI_RANK = ""
+var nNTACODE = ""
+var nNTANAME = ""
+var nPCT_BLACK_POP = ""
+var nPCT_HOUSEHOLDS_AC = ""
+var nPOV_PCT = ""
+var nSURFACETEMP = ""
+
+var HVImapSpec = "js/HVIMapSpec.vg.json"  //"map/mapnta.vl.json"
+var HospBarVGSpec = "js/HVIBarSpec.vg.json";
+
+var embed_opt = {"renderer":"svg",
   actions:false
 };
 var mapSearch = document.querySelector("#map-search"); // creates a constant to hold the map search component selector
@@ -42,15 +43,15 @@ var map = new nyc.ol.FrameworkMap({
 
 }); //the d3 code below loads the NTA map data
 
-var nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.json"); //the d3 code below loads the data from a CSV file and dumps it into global javascript object variable.
+//var nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.json"); //the d3 code below loads the data from a CSV file and dumps it into global javascript object variable.
 
-d3.csv("./data/NTA_tertilesWpm_no2.csv").then(function (data) {
+d3.csv("./data/HVI_DATA.csv").then(function (data) {
   //console.log(data); // [{"Hello": "world"}, …]
-  nyccasData = data;
-  neighborhoodData = nyccasData.filter(function (sf) {
-    return sf.NTACode === selectedNeighborhood;
+  hvidata = data;
+  neighborhoodData = hvidata.filter(function (sf) {
+    return sf.NTACODE === selectedNeighborhood;
   });
-  console.log(nyccasData);
+  console.log(hvidata);
   console.log(selectedNeighborhood);
   console.log(neighborhoodData);
 }); // dataChange function updates selected neighborhood, then filter nyccas data and get new neighborhood data, then adds to DOM
@@ -59,11 +60,11 @@ function dataChange() {
   console.log('hi from dataChange function');
   selectedNeighborhood = map.location.data.nta; //document.querySelector("#ntaField").value;
 
-  neighborhoodData = nyccasData.filter(function (sf) {
-    return sf.NTACode === selectedNeighborhood;
+  neighborhoodData = hvidata.filter(function (sf) {
+    return sf.NTACODE === selectedNeighborhood;
   });
   selectedName = map.location.data.ntaName; //neighborhoodData[0].NTAName;
-
+/*
   dPM = neighborhoodData[0].Avg_annavg_PM25;
   dPM = numRound(dPM);
   dNO2 = neighborhoodData[0].Avg_annavg_NO2;
@@ -72,18 +73,37 @@ function dataChange() {
   dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
   dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
   dIndustrial = neighborhoodData[0].tertile_industrial;
+*/
+  console.log(neighborhoodData[0]);
+  nCD = neighborhoodData[0].CD;
+  nGREENSPACE = neighborhoodData[0].GREENSPACE;  //green  *
+  nHRI_HOSP_RATE = neighborhoodData[0].HRI_HOSP_RATE;  //hosp  **
+  nHVI_RANK = neighborhoodData[0].HVI_RANK; //hvi  **
+  nNTACODE = neighborhoodData[0].NTACODE; 
+  nNTANAME = neighborhoodData[0].NTANAME; //nta1,2,3 etc
+  nPCT_BLACK_POP = neighborhoodData[0].PCT_BLACK_POP;  //bpop  *
+  nPCT_HOUSEHOLDS_AC = neighborhoodData[0].PCT_HOUSEHOLDS_AC; //ac  *
+  nPOV_PCT = neighborhoodData[0].POV_PCT;  //pov  *
+  nSURFACETEMP = neighborhoodData[0].SURFACETEMP;  //temp  *
+
   document.querySelector("#NTA").innerHTML = '<h4><span style="font-weight:bold;color:#15607a">' + selectedName + '</span></h4>';
-  document.querySelector("#NTA2").innerHTML = selectedName;
-  document.querySelector("#NTA3").innerHTML = selectedName;
-  document.querySelector("#PM").innerHTML = dPM + ' μg/m<sup>3</sup>';
-  document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
-  document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
-  document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
-  document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
-  document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
-  loadMap(tabShown);
-  loadPMBar();
-  loadNO2Bar();
+  //document.querySelector("#NTA2").innerHTML = selectedName;
+  //document.querySelector("#NTA3").innerHTML = selectedName;
+  document.querySelector("#tempVal").innerHTML = nSURFACETEMP + ' deg';
+  document.querySelector("#greenVal").innerHTML = nGREENSPACE + '%';
+  document.querySelector("#hospVal").innerHTML = nHRI_HOSP_RATE + ' per 100,000';
+  document.querySelector("#hviVal").innerHTML = nHVI_RANK + ' out of 5';
+  document.querySelector("#bpopVal").innerHTML = nPCT_BLACK_POP + '%';
+  document.querySelector("#acVal").innerHTML = nPCT_HOUSEHOLDS_AC + '%';
+  document.querySelector("#povVal").innerHTML = nPOV_PCT + '%';
+  //document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
+  //document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
+  //document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
+  //document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
+  //document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
+  //loadMap(tabShown);
+  loadMap();
+  loadHospBar();
   console.log('changed');
   console.log(selectedNeighborhood);
 } // rounding function lets us round all numbers the same
@@ -106,7 +126,7 @@ $(document).ready(function () {
     $(".act span").text(tabShown);
     $(".prev span").text("did it again");
     loadMap(tabShown);
-    loadPMBar();
+    loadHospBar();
     loadNO2Bar();
   });
 }); //Returns block-level badges for the tabs
@@ -173,7 +193,7 @@ function mapUpdateSpec(tabShown) {
 
 function loadMap() {
   //console.log(mapUpdateID(tabShown));
-  vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown), embed_opt).then(function (result) {
+  vegaEmbed('#mapvis', HVImapSpec, embed_opt).then(function (result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     //result.view.insert('selectedNabe',selectedNeighborhood).run()
     result.view.signal("selectNTA", selectedNeighborhood).runAsync();
@@ -185,7 +205,7 @@ loadMap();
 
 // load the PM Bar Chart
 var el = document.getElementById('PMbar');
-var pmBarView = vegaEmbed("#PMbar", PMBarVGSpec, embed_opt)
+var pmBarView = vegaEmbed("#PMbar", HospBarVGSpec, embed_opt)
 //.catch(function (error) {
 //  return showError(el, error);
 //})
@@ -193,8 +213,8 @@ var pmBarView = vegaEmbed("#PMbar", PMBarVGSpec, embed_opt)
   return res.view.signal("selectNTA", selectedNeighborhood).runAsync();
 }).catch(console.error);
 
-function loadPMBar() {
-  pmBarView = vegaEmbed("#PMbar", PMBarVGSpec, embed_opt)
+function loadHospBar() {
+  pmBarView = vegaEmbed("#PMbar", HospBarVGSpec, embed_opt)
  // .catch(function (error) {
  //   return showError(el, error);
  // })

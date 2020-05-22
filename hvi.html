@@ -32,6 +32,8 @@
     <!--AQE styles-->
     <link rel="stylesheet" href="css/aqe.css">
 
+    <style>.background {fill: transparent; stroke: transparent !important;}</style>
+
                 <!--Google Analytics script - 
                 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28636785-1"></script>
                 <script>
@@ -301,7 +303,8 @@
                 <div class="card-body">
 
 
-                        <iframe src="map/hvimap.html" style="width:100%; height:600px;" frameborder="0"></iframe>
+                        <!--<iframe src="map/hvimap.html" style="width:100%; height:600px;" frameborder="0"></iframe>-->
+                        <div class="vis2" id="mapvis"></div>
 
 
                 </div>
@@ -320,7 +323,7 @@
 
                 </div>
                 <div class="col-6">
-                    <h5>3 out of 5</h5>
+                    <h5 id="hviVal"></h5>
                 </div>
             </div>
 
@@ -341,12 +344,12 @@
                             aria-level="3">Surface temperature</span>
                         </div>
 
-                        <div class="col-3">
-                            <span class="badge badge-warning btn-block">Medium</span>
+                        <div id= "tempTertile" class="col-3">
+                          <!--  <span class="badge badge-warning btn-block">Medium</span>  -->
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span class="badge badge-light">84 deg</span>  
+                            <span id="tempVal" class="badge badge-light">84 deg</span>  
                         </div>           
                     </a>
 
@@ -374,11 +377,11 @@
                         </div>
 
                         <div class="col-3">
-                            <span class="badge badge-success btn-block">High</span>
+                            <!--<span class="badge badge-success btn-block">High</span>-->
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span class="badge badge-light">41%</span>  
+                            <span id="greenVal" class="badge badge-light">41%</span>  
                         </div>
 
                         
@@ -414,11 +417,11 @@
                         </div>
 
                         <div class="col-3">
-                            <span class="badge badge-success btn-block">High</span>
+                            <!--<span class="badge badge-success btn-block">High</span>-->
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span class="badge badge-light">92%</span>  
+                            <span id="acVal" class="badge badge-light">92%</span>  
                         </div>
                     </a>
 
@@ -446,11 +449,11 @@
                         </div>
 
                         <div class="col-3">
-                            <span class="badge badge-warning btn-block">Medium</span>
+                           <!--  <span class="badge badge-warning btn-block">Medium</span>  -->
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span class="badge badge-light">22%</span>  
+                            <span id="povVal" class="badge badge-light">22%</span>  
                         </div>
                         
                     </a>
@@ -485,11 +488,11 @@
                         </div>
 
                         <div class="col-3">
-                            <span class="badge badge-worse btn-block">High</span>
+                            <!--<span class="badge badge-worse btn-block">High</span> -->
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span class="badge badge-light">56%</span>  
+                            <span id="bpopVal" class="badge badge-light">56%</span>  
                         </div>
                     </a>
 
@@ -533,7 +536,7 @@
                         <div class="row mb-2">
                             <div class="col-4 ml-auto">NYC rate:
                                 <h4>XX per 100,000<sup>3</sup></h4></div>
-                            <div class="col-4 mr-auto">Your neighborhood:<h4 id="PM"></h4></div>
+                            <div class="col-4 mr-auto">Your neighborhood:<h4 id="hospVal"></h4></div>
 
                         </div>
                         

@@ -43,3 +43,26 @@
   height: 100%; 
   width: 25px;
 }
+
+.map-container {
+  width: 95vmin;
+}
+.center-me {
+  margin: 0 auto;
+}
+.vis {
+  height: 95vmin;
+  width: 100%;
+}
+.background {
+fill: transparent; stroke: transparent !important;
+}
+.vis2 {
+width: 100%;
+height: 95vmin;
+}
+
+.chartwrap {
+border-left: 10px solid #f2f2f2;
+padding-left: 10px; 
+}

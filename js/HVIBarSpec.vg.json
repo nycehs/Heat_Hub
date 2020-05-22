@@ -9,12 +9,12 @@
     "data": [
       {
         "name": "data_0",
-        "url": "data/NTA_tertilesWpm_no2.csv",
+        "url": "map/HVI_DATA.csv",
         "format": {"type": "csv", "delimiter": ","},
         "transform": [
           {
             "type": "filter",
-            "expr": "isValid(datum[\"Avg_annavg_PM25\"]) && isFinite(+datum[\"Avg_annavg_PM25\"])"
+            "expr": "isValid(datum[\"HRI_HOSP_RATE\"]) && isFinite(+datum[\"HRI_HOSP_RATE\"])"
           }
         ]
       }
@@ -52,17 +52,17 @@
         "encode": {
           "update": {
             "fill": [{
-                "test": "datum.NTACode==selectNTA",
+                "test": "datum.NTACODE==selectNTA",
                 "value": "orange"
             },
                 {"value": "grey"}
             ],
             "tooltip": {
-              "signal": "{\"PM 2.5\": format(datum[\"Avg_annavg_PM25\"], \".1f\"), \"Neighborhood\": ''+datum[\"NTAName\"]}"
+              "signal": "{\"Heat Hospitalization Rate\": format(datum[\"HRI_HOSP_RATE\"], \".1f\"), \"Neighborhood\": ''+datum[\"NTANAME\"]}"
             },
-            "x": {"scale": "x", "field": "NTACode"},
+            "x": {"scale": "x", "field": "NTACODE"},
             "width": {"scale": "x", "band": true},
-            "y": {"scale": "y", "field": "Avg_annavg_PM25"},
+            "y": {"scale": "y", "field": "HRI_HOSP_RATE"},
             "y2": {"scale": "y", "value": 0}
           }
         }
@@ -74,8 +74,8 @@
         "type": "band",
         "domain": {
           "data": "data_0",
-          "field": "NTACode",
-          "sort": {"op": "mean", "field": "Avg_annavg_PM25"}
+          "field": "NTACODE",
+          "sort": {"op": "mean", "field": "HRI_HOSP_RATE"}
         },
         "range": [0, {"signal": "width"}],
         "paddingInner": 0,
@@ -84,7 +84,7 @@
       {
         "name": "y",
         "type": "linear",
-        "domain": {"data": "data_0", "field": "Avg_annavg_PM25"},
+        "domain": {"data": "data_0", "field": "HRI_HOSP_RATE"},
         "range": [{"signal": "height"}, 0],
         "nice": true,
         "zero": true
@@ -108,7 +108,7 @@
         "scale": "y",
         "orient": "left",
         "grid": false,
-        "title": "PM 2.5",
+        "title": "Hospitalization Rate",
         "labelOverlap": true,
         "tickCount": {"signal": "ceil(height/40)"},
         "zindex": 0
