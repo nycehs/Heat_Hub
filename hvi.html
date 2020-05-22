@@ -278,8 +278,11 @@
                     <h4>&nbsp;</h4>
                     <button class="btn btn-primary btn-lg btn-block" id="outputButton">2. Get data for this neighborhood</button>  
                     <br>
-                    <p>The <strong>Heat Vulnerability Index</strong> identifies neigborhoods whose residents are more at risk for heat-related illness. It summarizes the most important factors associated with adverse health effects during extreme heat events.</p>
-                    <p>The NYC Heat Vulnerability Index (HVI) was developed by researchers at the NYC Health Department and Columbia University, using a statistical model. It uses social and environmental factors to determine the relative risk of NYC neighborhoods for heat‐related death during and immediately following extreme heat events. </p>
+                    <p>The <strong>Heat Vulnerability Index</strong> identifies neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
+                    <p>Differences in these risk factors across neighborhoods are rooted in past and present racism and as a result, neighborhoods with more Black residents are more at risk during extreme heat. 
+                    </p>
+                    <p>Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
+                    </p>
                 
                 </div>
             </div>
@@ -314,10 +317,17 @@
         <!--end col-->
 
         <div class="col-lg-5 my-2 mr-auto">
-            Your neighborhood:<br>
+            <div class="text-center"><em>Your neighborhood:</em></div><br>
                 <span id="NTA"></span> 
 
-            <div class="row my-2 border-top py-2">
+            <div class="row my-2 py-2 text-center">
+                <div class="col">
+                    <em>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk)</em>
+                </div>
+            </div>
+            
+                <div class="row my-2">
+
                 <div class="col-6">
                     <h5>Heat Vulnerability:</h5>
 
@@ -328,12 +338,12 @@
             </div>
 
             <div class="text-center">
-                <em>What affects heat vulnerability in your neighborhood</em>
+                <em>What affects heat risk in your neighborhood</em>
             </div>
         
 
             <div class="accordion-group narrow mt-1" role="tablist" id="accordion-01">
-
+                Environmental factors:
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed" id="acc-button-01" data-toggle="collapse"
@@ -349,7 +359,7 @@
                         </div>
                         
                         <div class="col-2 mr-auto">
-                            <span id="tempVal" class="badge badge-light">84 deg</span>  
+                            <span id="tempVal" class="badge badge-light">84°F</span>  
                         </div>           
                     </a>
 
@@ -402,7 +412,8 @@
                 </div>
                 <!-- .card -->
 
-
+                <br>
+                Social factors:
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed"
@@ -463,7 +474,7 @@
                         data-parent="#accordion-01">
 
                         <div class="card-body">
-                            <p>For the Heat Vulnerability Index, we measure poverty as the percent of people in a neighborhood living below the Federal Poverty Level. Poverty is a social factor that places people at risk of death during heat waves for many reasons. One reason may be that people living in poverty may be less likely to own and use an air conditioner during heat waves.
+                            <p>For this index, we measure poverty as the percent of people in a neighborhood living below the Federal Poverty Level. Poverty is a social factor that places people at risk of death during heat waves for many reasons. One reason may be that people living in poverty may be less likely to afford owning or using an air conditioner during heat waves.
                             </p>
                         </div>
 
@@ -501,7 +512,7 @@
                         data-parent="#accordion-01">
 
                         <div class="card-body">
-                            <p>In New York City, Black  people are at a higher risk of death due to heat waves. While the factors contributing to this increased risk are not entirely understood, past and current racist policies and systems that result in inequitable distribution of social and economic resources are likely contributors. These systems and policies can contribute to a higher prevalence of health conditions overall that increase risk to heat‐related illness and limit access to air conditioning among non‐Latino Blacks.  
+                            <p>In New York City, Black residents are at a higher risk of death due to heat waves. While the factors contributing to this increased risk are not entirely understood, past and current racist policies and systems that result in inequitable distribution of social and economic resources are likely contributors. These systems and policies can contribute to a higher prevalence of health conditions overall that increase risk to heat‐related illness and limit access to air conditioning among Black residents.  
                             </p>
                         </div>
 
