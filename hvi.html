@@ -302,48 +302,43 @@
     <div class="row">
         <div class="col-lg-6 my-2 ml-auto">
             
-            <div class="card mb-2">
-                <div class="card-body">
+            <div class="lefterbar">
 
 
                         <!--<iframe src="map/hvimap.html" style="width:100%; height:600px;" frameborder="0"></iframe>-->
-                        <div class="vis2" id="mapvis"></div>
+                        <div class="vis2" id="mapvis" style="border-radius: 5px;"></div>
 
-
-                </div>
             </div>
 
         </div>
         <!--end col-->
 
+        <style>
+            .lefterbar {
+                border-left: 5px solid #cccccc;
+                padding-left: 5px;
+                border-radius: 5px;
+            }
+        </style>
+
         <div class="col-lg-5 my-2 mr-auto">
-            <div class="text-center"><em>Your neighborhood:</em></div><br>
+            <div class="lefterbar">
+            <div class="border-bottom"><em>Your neighborhood:</em></div><br>
                 <span id="NTA"></span> 
 
-            <div class="row my-2 py-2 text-center">
-                <div class="col">
-                    <em>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk)</em>
+                <div class="border-bottom mt-4"><em>Heat vulnerability:</em></div><br>
+                <h4 id="hviVal" style="color: #15607a; font-weight: bold;"></h5>
                 </div>
-            </div>
-            
-                <div class="row my-2">
 
-                <div class="col-6">
-                    <h5>Heat Vulnerability:</h5>
+                <br>
+                <div class="lefterbar">
 
-                </div>
-                <div class="col-6">
-                    <h5 id="hviVal"></h5>
-                </div>
-            </div>
+                <em>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). What affects heat risk in your neighborhood?</em>
 
-            <div class="text-center">
-                <em>What affects heat risk in your neighborhood</em>
-            </div>
-        
+
 
             <div class="accordion-group narrow mt-1" role="tablist" id="accordion-01">
-                Environmental factors:
+                <div class="border-bottom  mt-4 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Environmental factors:</div>
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed" id="acc-button-01" data-toggle="collapse"
@@ -413,7 +408,7 @@
                 <!-- .card -->
 
                 <br>
-                Social factors:
+                <div class="border-bottom mt-4 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Social factors:</div>
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed"
@@ -521,6 +516,7 @@
 
                 </div>
                 <!-- .card -->
+                </div>
 
 
 
@@ -538,7 +534,8 @@
     <!--end row-->
 
     <div class="row">
-        <div class="col-11 mx-auto">
+        <div class="col-lg-11 mx-auto mt-4">
+            <div class="lefterbar">
             <h5><i class="fas fa-smog"></i>&nbsp;Heat-related hospitalizations</h5>
                         
             <div class="card">
@@ -546,18 +543,19 @@
                 <div class="card-body">
                         <div class="row mb-2">
                             <div class="col-4 ml-auto">NYC rate:
-                                <h4>XX per 100,000<sup>3</sup></h4></div>
+                                <h4>XX per 100,000</h4></div>
                             <div class="col-4 mr-auto">Your neighborhood:<h4 id="hospVal"></h4></div>
 
                         </div>
                         
                        
-                        <div style="height: 150px;" id="PMbar"></div>
+                        <div style="height: 220px;" id="PMbar"></div>
                                 
                         
 
                 </div>
             </div>
+        </div>
 
         </div>
 

@@ -60,6 +60,7 @@ fill: transparent; stroke: transparent !important;
 .vis2 {
 width: 100%;
 height: 95vmin;
+border-radius: 5px;
 }
 
 .chartwrap {
