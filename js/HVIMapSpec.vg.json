@@ -123,7 +123,7 @@
             "stroke": [
                 {
                   "test": "datum.properties.NTACode==selectNTA",
-                  "value": "orange"
+                  "value": "#7FE5F0"
                 },
                 {"value": "white"}
               ],
@@ -131,7 +131,7 @@
             "strokeWidth": [
               {
                 "test": "(vlSelectionTest(\"highlight_store\", datum))",
-                "value": 2
+                "value": 3
               },{
                 "test": "datum.properties.NTACode==selectNTA",
                 "value": 3

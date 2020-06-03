@@ -53,7 +53,7 @@
           "update": {
             "fill": [{
                 "test": "datum.NTACODE==selectNTA",
-                "value": "orange"
+                "value": "#7FE5F0"
             },
                 {"value": "grey"}
             ],
