@@ -155,7 +155,6 @@ $(document).ready(function () {
     $(".prev span").text("did it again");
     loadMap(tabShown);
     loadHospBar();
-    loadNO2Bar();
   });
 }); //Returns block-level badges for the tabs
 
@@ -185,38 +184,6 @@ function tertileTranslate2(tertileVal) {
 } //Returns map insert/update div IDs
 
 
-function mapUpdateID(tabShown) {
-  if (tabShown === "tab-01-a") {
-    return '#BEmap';
-  } else if (tabShown === "tab-01-d") {
-    return '#BDmap';
-  } else if (tabShown === "tab-01-b") {
-    return '#Industrialmap';
-  } else if (tabShown === "tab-01-c") {
-    return '#Trafficmap';
-  } else {
-    console.log('Error: not sure which map to update');
-  }
-
-  ;
-} //Returns map specs for proper tab context
-
-
-function mapUpdateSpec(tabShown) {
-  if (tabShown === "tab-01-a") {
-    return "./js/BEmapSpec.vg.json";
-  } else if (tabShown === "tab-01-d") {
-    return "./js/BDmapSpec.vg.json";
-  } else if (tabShown === "tab-01-b") {
-    return "./js/IndustrialmapSpec.vg.json";
-  } else if (tabShown === "tab-01-c") {
-    return "./js/TrafficmapSpec.vg.json";
-  } else {
-    console.log('Error: not sure which map to update');
-  }
-
-  ;
-} //create a function to load the Building Density map. Invoked when user clicks the tab or when neighborhood changes.
 
 
 function loadMap() {
@@ -245,7 +212,7 @@ function load_smallCircles(loc,field,val) {
 
 //load_smallCircles(smallCircleLoc,1); 
 
-// load the PM Bar Chart
+// load the Hospitalization Bar Chart
 var el = document.getElementById('PMbar');
 var pmBarView = vegaEmbed("#PMbar", HospBarVGSpec, embed_opt)
 //.catch(function (error) {

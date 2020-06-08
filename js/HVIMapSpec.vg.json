@@ -23,7 +23,7 @@
             "key": "NTACODE",
             "fields": ["properties.NTACode"],
             "values": ["NTACODE", "NTANAME", "HVI_RANK"],
-            "default": "no data"
+            "default": null
           }
         ]
       }
