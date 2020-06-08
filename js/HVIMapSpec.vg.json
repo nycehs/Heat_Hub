@@ -23,9 +23,12 @@
             "key": "NTACODE",
             "fields": ["properties.NTACode"],
             "values": ["NTACODE", "NTANAME", "HVI_RANK"],
-            "default": null
+            "default": "Parks/Cemeteries/Airports(unpopulated)"
           }
         ]
+      },
+      {
+      "name": "NTAexclude","values": [{"excludeList":"MN99"},{"excludeList":"QN98"},{"excludeList":"BK99"},{"excludeList":"QN99"},{"excludeList":"BX99"},{"excludeList":"SI99"}]
       }
     ],
     "projections": [
@@ -127,7 +130,11 @@
                 },
                 {"value": "white"}
               ],
-            "fill": {"scale": "color", "field": "HVI_RANK"},
+            "fill": [{
+              "test":"indata('NTAexclude','excludeList',datum.properties.NTACode)",
+              "value":"gray"
+            },
+            {"scale": "color", "field": "HVI_RANK"}],
             "strokeWidth": [
               {
                 "test": "(vlSelectionTest(\"highlight_store\", datum))",
@@ -139,7 +146,7 @@
               {"value": 0.5}
             ],
             "tooltip": {
-              "signal": "{\"Neighborhood\": isValid(datum[\"NTANAME\"]) ? datum[\"NTANAME\"] : \"\"+datum[\"NTANAME\"], \"HVI score:\": format(datum[\"HVI_RANK\"], \"\")}"
+              "signal": "{\"Neighborhood\": isValid(datum[\"NTANAME\"]) ? datum[\"NTANAME\"] : \"\"+datum[\"NTANAME\"], \"HVI score\": format(datum[\"HVI_RANK\"], \"\")}"
             },
             "ariaRoleDescription": {"value": "geoshape"},
             "description": {
