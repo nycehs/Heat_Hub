@@ -8,18 +8,54 @@ var selectedName = '';
 
 // NTACODE,NTANAME,POV_PCT,PCT_BLACK_POP,GREENSPACE,SURFACETEMP,PCT_HOUSEHOLDS_AC,HVI_RANK,CD,HRI_HOSP_RATE
 
-var nCD = ""
-var nGREENSPACE = ""
-var nHRI_HOSP_RATE = ""
-var nHVI_RANK = ""
-var nNTACODE = ""
-var nNTANAME = ""
-var nPCT_BLACK_POP = ""
-var nPCT_HOUSEHOLDS_AC = ""
-var nPOV_PCT = ""
-var nSURFACETEMP = ""
+var nCD = "";
+var nGREENSPACE = "";
+var nHRI_HOSP_RATE = "";
+var nHVI_RANK = "";
+var nNTACODE = "";
+var nNTANAME = "";
+var nPCT_BLACK_POP = "";
+var nPCT_HOUSEHOLDS_AC = "";
+var nPOV_PCT = "";
+var nSURFACETEMP = "";
 
-var HVImapSpec = "js/HVIMapSpec.vg.json"  //"map/mapnta.vl.json"
+// these variables hold the ids of the divs to hold the small circle graphs
+var scLocTemp = "#tempTertile";
+var scLocGreen = "#greenTertile";
+var scLocAC = "#acTertile";
+var scLocPov = "#povTertile";
+var scLocBPop = "#bpopTertile";
+
+var smallCircleMapSpec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "A simple bar chart with named data.",
+  "padding":1,
+  "height":30,
+  "width":"container",
+  "autosize":"fit-x",
+  "background":"#e6ecf7",
+  "layer":[
+  {
+  "data":{"name":"hvi","url": "../data/HVI_DATA.csv"},
+  "mark": "circle",
+  "encoding": {
+    "x": {"field": "GREENSPACE","type": "quantitative","axis":null},
+    "size":{"value":300},
+    "opacity":{"value":0.1},
+    "color": {"value":"gray"}
+  }
+  },{
+  "data":{"name":"overlay","values": [{}]},
+  "mark": "circle",
+  "encoding": {
+    "x": {"datum":30,"axis":null},
+    "size":{"value":300},
+    "color": {"value":"red"}
+  }}]
+};
+//var SCM_spec = {};
+
+var HVImapSpec = "js/HVIMapSpec.vg.json";  //"map/mapnta.vl.json"
 var HospBarVGSpec = "js/HVIBarSpec.vg.json";
 
 var embed_opt = {"renderer":"svg",
@@ -64,16 +100,7 @@ function dataChange() {
     return sf.NTACODE === selectedNeighborhood;
   });
   selectedName = map.location.data.ntaName; //neighborhoodData[0].NTAName;
-/*
-  dPM = neighborhoodData[0].Avg_annavg_PM25;
-  dPM = numRound(dPM);
-  dNO2 = neighborhoodData[0].Avg_annavg_NO2;
-  dNO2 = numRound(dNO2);
-  dBuildingEmissions = neighborhoodData[0].tertile_buildingemissions;
-  dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
-  dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
-  dIndustrial = neighborhoodData[0].tertile_industrial;
-*/
+
   console.log(neighborhoodData[0]);
   nCD = neighborhoodData[0].CD;
   nGREENSPACE = neighborhoodData[0].GREENSPACE;  //green  *
@@ -96,13 +123,14 @@ function dataChange() {
   document.querySelector("#bpopVal").innerHTML = nPCT_BLACK_POP + '%';
   document.querySelector("#acVal").innerHTML = nPCT_HOUSEHOLDS_AC + '%';
   document.querySelector("#povVal").innerHTML = nPOV_PCT + '%';
-  //document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
-  //document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
-  //document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
-  //document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
-  //document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
-  //loadMap(tabShown);
+
   loadMap();
+
+  //load_smallCircles(scLocTemp,"SURFACETEMP",neighborhoodData[0].SURFACETEMP); 
+  //load_smallCircles(scLocGreen,"GREENSPACE",neighborhoodData[0].GREENSPACE); 
+  //load_smallCircles(scLocAC,"PCT_HOUSEHOLDS_AC",neighborhoodData[0].PCT_HOUSEHOLDS_AC); 
+  //load_smallCircles(scLocPov,"POV_PCT",neighborhoodData[0].POV_PCT); 
+  //load_smallCircles(scLocBPop,"PCT_BLACK_POP",neighborhoodData[0].PCT_BLACK_POP); 
   loadHospBar();
   console.log('changed');
   console.log(selectedNeighborhood);
@@ -203,6 +231,20 @@ function loadMap() {
 
 loadMap(); 
 
+function load_smallCircles(loc,field,val) {
+  //console.log(mapUpdateID(tabShown));
+  smallCircleMapSpec.layer[0].encoding.x.field = field;
+  smallCircleMapSpec.layer[1].encoding.x.datum = val;
+  vegaEmbed(loc, smallCircleMapSpec, embed_opt).then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    //result.view.signal("selectNTA", selectedNeighborhood).runAsync();
+  }).catch(console.error);
+} // load the maps initially
+
+
+//load_smallCircles(smallCircleLoc,1); 
+
 // load the PM Bar Chart
 var el = document.getElementById('PMbar');
 var pmBarView = vegaEmbed("#PMbar", HospBarVGSpec, embed_opt)
@@ -223,27 +265,7 @@ function loadHospBar() {
   }).catch(console.error);
 } 
 
-// load the NO2 Bar Chart
 
-
-var ele = document.getElementById('NO2bar');
-var NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec, embed_opt)
-//.catch(function (error) {
-//  return showError(ele, error);
-//})
-.then(function (res) {
-  return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-}).catch(console.error);
-
-function loadNO2Bar() {
-  NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec, embed_opt)
-//  .catch(function (error) {
-//    return showError(ele, error);
- // })
-  .then(function (res) {
-    return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-  }).catch(console.error);
-}
 /*   //These scripts load the maps initially but once a neighborhood is selected this is not needed
  //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
 var PMmapSpec = "./js/PMmapSpec.vl.json"
