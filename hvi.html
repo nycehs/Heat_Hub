@@ -251,13 +251,15 @@
 
 
             <div class="row">
-                <div class="col-lg-6 ml-auto col-sm-12 pt-2 pb-4"><h4>1. Enter your address</h4>   
+                <div class="col-lg-6 ml-auto col-sm-12 pt-2 pb-4"><em>Enter an address below</em>
 
                         <!-- <label for="addressInput">Enter your address:</label> -->
 
                     <div class="srch input-group" role="search">
                         <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
                     </div>
+                    <button class="btn btn-primary btn-lg btn-block mt-1" id="outputButton">Get data for this neighborhood</button>  
+
 
                         <!-- <input type="text" id="addressInput" class="ntaField"> -->
                     <div id='mapLocator'></div>
@@ -275,19 +277,22 @@
                 </div>
 
                 <div class="col-lg-5 mr-auto col-sm-12 pt-2">
-                    <h4>&nbsp;</h4>
-                    <button class="btn btn-primary btn-lg btn-block" id="outputButton">2. Get data for this neighborhood</button>  
+                    <em>&nbsp;</em>
                     <br>
                     <p>The <strong>Heat Vulnerability Index</strong> identifies neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
                     <p>Differences in these risk factors across neighborhoods are rooted in past and present racism and as a result, neighborhoods with more Black residents are more at risk during extreme heat. 
                     </p>
-                    <p>Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
+                    <p>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
                     </p>
                     <div class="lefterbar">
                         <div class="border-bottom"><em>Your neighborhood:</em></div><br>
                         <span id="NTA"></span> 
                     </div>
-                
+
+                    <div class="lefterbar mt-2">
+                        <div class="border-bottom"><em>Heat vulnerability:</em></div><br>
+                        <h4 id="hviVal" style="color: #15607a; font-weight: bold;"></h5>
+                        </div>        
                 </div>
             </div>
 
@@ -326,20 +331,14 @@
         </style>
 
         <div class="col-lg-5 my-2 mr-auto">
-            <div class="lefterbar">
-                <div class="border-bottom"><em>Heat vulnerability:</em></div><br>
-                <h4 id="hviVal" style="color: #15607a; font-weight: bold;"></h5>
-                </div>
-
-                <br>
                 <div class="lefterbar">
 
-                <em>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). What affects heat risk in your neighborhood?</em>
+                <em>What affects heat risk in your neighborhood?</em>
 
 
 
             <div class="accordion-group narrow mt-1" role="tablist" id="accordion-01">
-                <div class="border-bottom  mt-4 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Environmental factors:</div>
+                <div class="border-bottom  mt-2 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Environmental factors:</div>
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed" id="acc-button-01" data-toggle="collapse"
@@ -409,7 +408,7 @@
                 <!-- .card -->
 
                 <br>
-                <div class="border-bottom mt-4 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Social factors:</div>
+                <div class="border-bottom mt-2 mb-2"><i class="fas fa-arrow-right"></i>&nbsp;Social factors:</div>
                 <div class="card">
 
                     <a class="card-header h5 collapse collapsed"
