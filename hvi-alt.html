@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Corrects IE Compatibility Mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Heat Vulnerability Index: NYC</title>
+
+    <!--
+    CSS is all hosted by the Core-Repo. Links will need to be updated for each project once merged or deployed.
+    This is also the case for main.js further below.
+    -->
+        
+    <!-- nyc-lib css (for maps in the core framework)-->
+    <link href="https://maps.nyc.gov/nyc-lib/v1.2.79/css/nyc-basic-lib.css" rel="stylesheet">
+
+    <!--Fontawesome Icons-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/fontawesome/css/all.min.css">
+    <!--NYC Core Framework Theme-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/css/theme.css">
+    <!--Custom additions for Portal items-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/css/custom.css">
+
+
+    <!--AQE styles-->
+    <link rel="stylesheet" href="css/aqe.css">
+
+    <style>.background {fill: transparent; stroke: transparent !important;}</style>
+
+                <!--Google Analytics script - 
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28636785-1"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                
+                  gtag('config', 'UA-28636785-1');
+                </script>
+                use only on Production-->
+    
+
+
+
+
+</head>
+
+<body>
+    
+    <!-- For keyboard users -->
+    <a class="sr-only sr-only-focusable skip-menu" href="#skip-header-target">Skip Header</a>
+
+    <header id="global-header" class="titleslide" role="banner" style="background-image: url(images/background.png);">
+
+        <div class="bg-black text-white" id="nyc-top-header">
+
+            <div class="container-fluid wide">
+
+                <div class="row py-1 align-items-center justify-content-between">
+
+                    <div class="col-auto">
+                        <p class="d-none d-md-flex fs-md">
+                            <a class="text-reset" href="https://www1.nyc.gov/">
+                                <strong>nyc.gov</strong>
+                            </a>
+                            <span class="mx-1" aria-hidden="true">|</span>
+                            Department of Health
+                        </p>
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-auto">
+
+                        <ul class="extensible-list horizontal fs-md">
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/">
+                                    <strong>
+                                        311
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/search/index.page">
+                                    <strong>
+                                        Search all NYC.gov
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
+                                    <img class="d-block" src="https://nycehs.github.io/Portal-Core-Repo/images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- #nyc-top-header -->
+
+
+        <div class="wrap-header">
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg py-2">
+                        <div class="d-flex justify-content-lg-start">
+                            <a class="align-self-center" href="#" title="Home">
+
+                                <!-- Placeholder logo, replace the following <svg> tag with your own image version -->
+                                    <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/">
+                                        <i class="fas fa-home"></i>&nbsp;EH Data Portal Home 
+                                    </a>
+
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- .col -->
+
+                    <div class="col-lg-auto border-top border-lg-0">
+
+                        <div class="d-lg-flex align-items-center">
+
+                            <!-- Mobile Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal justify-content-between my-2 d-lg-none">
+                                <li>
+                                    <button class="no-btn-style" type="button" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+
+                            </ul>
+
+                            <div class="collapse d-lg-block mx-n2 mx-lg-2" id="nav-primary">
+
+                            </div>
+
+                            <!-- Desktop Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal d-none d-lg-flex">
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Language" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <!-- .d-flex -->
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- .wrap-header -->
+
+        <div class="container-fluid border-top collapse" id="global-language">
+            <div class="narrow py-2">
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+
+        <div class="container-fluid border-top collapse" id="global-search">
+            <form class="narrow py-2" aria-label="Search" role="search">
+                <div class="input-group">
+                    <label class="sr-only" for="global-search-bar">Search</label>
+                    <input class="form-control form-control-lg" id="global-search-bar" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="button" title="Search">
+                            <span class="sr-only">Search</span>
+                            <span class="fas fa-arrow-right" ></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+    </header>
+    <!-- #global-header -->
+
+
+
+    <main id="skip-header-target" role="main" style="background-color:#f8f9fa;">
+
+
+
+
+        <div class="container-fluid fs-sm">
+            <div class="row">
+                <div class="col-lg-11 mx-auto">
+                        <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Climate and Health</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">HVI Explorer</li>
+                                </ol>
+            
+                            </nav>
+                        </div>
+                    </div>
+
+            <div class="row mt-2">
+
+                <div class="col-lg-6 ml-auto">
+                    <h3>Heat Vulnerability Explorer</h3>
+                    <p>Hot weather is dangerous. In New York City – and across the country – more people die from heat than from all other natural disasters combined. As our climate continues to warm, we expect more heat events that can put people’s lives at risk.
+                    </p>
+                    <strong>What causes vulnerability to hot weather?</strong>
+                    <p>We’ve identified environmental and social factors that make some neighborhoods more susceptible to heat, and that drive disparities in heat-related illness.</p>
+                    <p>To view what drives your neighborhood’s vulnerability, enter an address below. </p>
+
+                                            <!-- <label for="addressInput">Enter your address:</label> -->
+                                            <div class="srch input-group" role="search">
+                                                <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
+                                            </div>
+
+                                                <!-- <input type="text" id="addressInput" class="ntaField"> -->
+                                            <div id='mapLocator' style="height: 200px;"></div>
+
+                                            <button class="btn btn-primary btn-lg btn-block mt-1" id="outputButton">Click to get data for this neighborhood</button>  
+                                            
+                                            
+                                        
+                                            <div id="form">
+                                                    <!--comment out label though we may need label for accessibility
+                                                        <label for="ntaField">Enter an NTA code: </label> 
+                                                        Add d-none to the class to hide the entire group
+                                                    -->
+                        
+                                            </div> 
+
+                                            <div class="text-center mt-3">
+                                                <a href="#jumpto">
+                                                    <i class="fas fa-arrow-circle-down center ball" style="font-size: 4rem"></i>
+                                                </a>
+                                            </div>
+
+
+                </div>
+            
+
+                <div class="col-lg-4 mx-auto">
+                    <a href="syndromic.html"><button type="button" class="btn btn-light float-right">Real-time heat illness data</button></a>
+
+                    <div class="mt-4" style="border-radius: 5px;">
+                
+                        <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/?unit=us" data-label_1="NEW YORK CITY" data-label_2="WEATHER" data-theme="original" >NEW YORK CITY WEATHER</a>
+                        <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                        </script>
+                        
+        
+        <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
+           <p>In NYC, an <strong>extreme heat event</strong> is two or more days with a heat index reaching 95 °F, or one or more days reaching 100 °F.</div>
+            <!--
+            <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">Get a <strong>weather forecast</strong> from the National Weather Service for your area at <a href="https://www.weather.gov/">weather.gov</a>.</div>-->
+            <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
+             To learn more about heat and health, visit <a href="https://www1.nyc.gov/site/doh/health/emergency-preparedness/emergencies-extreme-weather-heat.page">Extreme Heat and Health</a>. To stay safe in the heat, visit <a href="https://www1.nyc.gov/assets/em/html/beat-the-heat/beattheheat.html">Beat the Heat</a>.</p>
+        </div>
+        
+        
+        
+                        </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="row mt-6 align-items-start">
+                <div class="col-lg-6 ml-auto sticky-top">
+                    <h4>Your neighborhood's heat vulnerability</h4>
+                        <div class="lefterbar"><a name="jumpto"></a>
+                            <div class="border-bottom"><em>Your neighborhood:</em></div><br>
+                            <span id="NTA" class="badge badge-primary">No neighborhood selected. Enter an address above</span> 
+                        </div>
+    
+                        <div class="lefterbar mt-4">
+                            <div class="border-bottom"><em>Heat vulnerability:</em></div><br>
+                            <h5 id="hviVal" style="color: #15607a; font-weight: bold;">No neighborhood selected. Enter an address above</h5>
+                            </div> 
+
+                        <div class="lefterbar mt-4">
+                            <div class="border-bottom"><em>Heat Vulnerability Index</em></div>
+                            <div class="vis2" id="mapvis" style="border-radius: 5px;"></div>
+
+
+                        </div>
+
+
+                </div>
+
+                <div class="col-lg-5 mr-auto">
+                    <h4>What factors make neighborhoods vulnerable to heat?</h4>
+                    <div class="lefterbar">
+                        <div class="border-bottom"><em>Surface temperature</em></div>
+                        <p><a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2141,719b87,107,Summarize">Daytime summer surface temperature</a> varies by neighborhood: some neighborhoods are hotter than others. A higher surface temperature is associated with a higher risk of death from heat waves.
+                        </p>
+                        <p>Your neighborhood: <span id="tempVal" class="badge badge-primary">XX°F</span>  
+                        </p>
+
+                    </div>
+
+                    <div class="lefterbar mt-4">
+                        <div class="border-bottom"><em>Green space</em></div>
+                        <p>Green space is <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2157,719b87,104,Summarize">tree</a>, <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2143,719b87,107,Summarize">grass, or shrub cover</a>. Green space helps cool a neighborhood. Less green space in a neighborhood is associated with a greater risk of death during heat waves.
+                        </p>
+                        <p>Your neighborhood: <span id="greenVal" class="badge badge-primary">XX%</span>  </p>
+
+
+                    </div>
+
+                    <div class="lefterbar mt-4">
+                        <div class="border-bottom"><em>Poverty</em></div>
+                        <p><a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=103,4466a0,109,Summarize">Poverty</a> is a social factor that places people at risk of death during heat waves for many reasons. One reason may be that people living in poverty may be less likely to afford owning or using an air conditioner during heat waves.
+                        </p>
+                        <p>Your neighborhood:<span id="povVal" class="badge badge-primary">XX%</span>  </p>
+
+
+                    </div>
+
+                    <div class="lefterbar my-4">
+                        <div class="border-bottom"><em>Air conditioning</em></div>
+                        <p>An air conditioner is as necessary during extreme heat as heating is during the winter. A neighborhood with a high percentage of <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2185,719b87,107,Summarize">households with air conditioners</a> means that more of its residents can be protected from extreme heat. </p>
+                        <p>Your neighborhood: <span id="acVal" class="badge badge-primary">XX%</span>  </p>
+
+
+                    </div>
+
+                    <h4>Heat-related illness</h4>
+                    <div class="lefterbar mb-4">
+                        <div class="border-bottom"><em>Heat-related illness hospitalization rate</em></div> 
+
+                                        <div class="row my-2">
+                                            <div class="col-6">Your neighborhood:<h4 id="hospVal"></h4></div>
+
+                                            <div class="col-6">NYC rate:
+                                                <h4>1.5 per 100,000</h4></div>
+                
+                                        </div>
+                                        
+                                       
+                                        <div style="height: 250px;" id="PMbar"></div>
+                
+                                        <div class="text-right"> <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2410,4466a0,100,Summarize">See full data</a></div>
+                        </div>
+
+
+                    <h4>Disparities in heat vulnerability and illness</h4>
+                    <p>Black New Yorkers suffer disproportionate health impacts from heat due to social and economic disparities. These disparities stem from structural racism, which includes things like neighborhood disinvestment, racist housing policies, fewer job opportunities, and lower pay.                     </p>
+                    <p>Overall, these systems limit access to resources that protect health. While many factors affect a neighborhood’s heat-related hospitalization rate, Black New Yorkers are subjected to higher rates of poverty and lower access to AC, green space, and neighborhood cooling resources. 
+                    </p>
+                    <p>As a result, neighborhoods with more Black residents are more at risk during extreme heat. Neighborhoods with a higher percentage of Black people are more likely to have higher rates of heat-related hospitalizations.
+                    </p>
+                    <div class="lefterbar">
+                    <p>Your neighborhood: <span id="bpopVal" class="badge badge-primary">XX%</span> Black 
+                    </p>
+                    <iframe title="" aria-label="chart" id="datawrapper-chart-E3CX1" src="https://datawrapper.dwcdn.net/E3CX1/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="450"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
+                    </script>
+                    </div>
+
+                    <hr>
+
+                </div>
+            </div>
+
+
+
+            <div class="row mt-4">
+                <div class="col-lg-5 ml-auto">
+                    <h4>The Heat Vulnerability Index</h4>
+                    <p>The Heat Vulnerability Index identifies neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
+                    <p>Differences in these risk factors across neighborhoods are rooted in past and present racism and as a result, neighborhoods with more Black residents are more at risk during extreme heat. 
+                    </p>
+                    <p>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
+                    </p>
+                </div>
+
+
+                <div class="col-lg-6 mr-auto">
+                    <h4>More about heat-related illness and heat vulnerability</h4>
+                    <ul>
+                        <li>LINK</li>
+                        <li>LINK</li>
+                        <li>LINK</li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+            <br><br><br><br>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+    </main>
+
+    <footer class="bg-black" id="global-footer" role="contentinfo">
+
+        <h2 class="sr-only">
+            Page Footer
+        </h2>
+
+        <div class="bg-opacity-black-25 text-white" id="nyc-footer">
+
+            <div class="container py-3 d-none" id="languages">
+
+                <div class="row fs-md">
+
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #languages -->
+
+            <div class="container py-3" id="languages">
+
+                <ul class="fs-md" role="list">
+                    <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                </ul>
+
+            </div>
+            <!-- #languages -->
+
+            <hr class="opacity-10" aria-hidden="true">
+
+            <div class="container py-3">
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-8 mb-3 mb-lg-0">
+
+                        <nav class="row fs-md" role="navigation">
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/nyc-resources/agencies.page">
+                                            <strong>City Agencies</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a858-nycnotify.nyc.gov/notifynyc/">
+                                            <strong>Notify NYC</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/connect/mobile-applications.page">
+                                            <strong>NYC Mobile Apps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/home/contact-us.page">
+                                            <strong>Contact NYC Government</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a856-citystore.nyc.gov/">
+                                            <strong>CityStore</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://maps.nyc.gov/doitt/nycitymap/">
+                                            <strong>Maps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset"
+                                            href="https://a127-ess.nyc.gov/psp/prdess/?cmd=login&languageCd=ENG&">
+                                            <strong>City Employees</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/connect/social-media.page">
+                                            <strong>Stay Connected</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/nyc-resources/resident-toolkit.page">
+                                            <strong>Resident Toolkit</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                        </nav>
+
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <a class="mb-2" href="https://www1.nyc.gov" title="Go to nyc.gov" target="_blank">
+                            <img class="mb-2" src="https://nycehs.github.io/Portal-Core-Repo/images/nyc-bubble-logo.svg" width="90" alt="NYC Logo">
+                        </a>
+                        <p class="fs-sm">City of New York - 2019 All Rights Reserved. NYC is a trademark and service
+                            mark of the City of New York.</p>
+
+                        <ul class="extensible-list horizontal fs-sm">
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/privacy-policy.page">Privacy
+                                    Policy</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/terms-of-use.page">Terms
+                                    of Use</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/site/mopd/index.page"
+                                    title="Mayor's Office for People with Disabilities">
+                                    <span class="sr-only">Mayor's Office for People with Disabilities</span>
+                                    <span class="fab fa-lg fa-accessible-icon"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container -->
+
+        </div>
+        <!-- #nyc-bottom-footer -->
+
+    </footer>
+
+<!--Required charting scripts-->
+
+     <!-- jQuery (full, compressed version) -->
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+     <!-- Popper.js and Bootstrap JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- support for IE compatibility, esp. for vega -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.js"></script>
+    <script src="https://vega.github.io/vega/assets/promise.min.js"></script>
+    <script src="https://vega.github.io/vega/assets/symbol.min.js"></script>
+    <script src="https://vega.github.io/vega/assets/fetch.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/vega@5/build-es5/vega.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4/build-es5/vega-lite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6/build-es5/vega-embed.js"></script>
+  <!-- vega dataviz -->
+  <!--  <script src="https://cdn.jsdelivr.net/npm/vega@4.3"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>    -->
+
+  <!-- Google Translate -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- NYC template JS (RTL, search and language toggle, back to top)  -->
+    <script src="https://nycehs.github.io/Portal-Core-Repo/js/main.js"></script>
+
+    <!-- NYC Core Framework Map dependencies  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+    <!-- <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/babel-polyfill.js"></script> THIS polyfill is included earlier-->
+    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/nyc-ol-lib.js"></script>
+    
+  <!--This script makes the modal fed from an HTML file-->
+  <script>
+    $('.li-modal').on('click', function(e){
+      e.preventDefault();
+      $('#theModal').modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+  </script>
+
+    <!--Script that makes collapsed button content hide on selection of another button-->
+    <script>jQuery('button').click( function(e) {
+		jQuery('.collapse').collapse('hide');
+	});</script>
+
+
+    <!--this is the AQE javascript-->
+    <script src='./js/AQhub_babel.js'></script>
+
+
+
+<!-- // Locator Map  
+<script>
+        var map = new nyc.ol.FrameworkMap({
+        mapTarget: '#mapLocator',
+        startAt: '125 Worth Street',
+        geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
+      });
+      </script>
+-->
+
+</body>
+
+</html>

@@ -18,6 +18,11 @@
   width: 100%;
 }
 
+.lefterbar {
+  border-left: 5px solid #cccccc;
+  padding-left: 5px;
+  border-radius: 5px;
+   }
 
 .maplegend {
   background-color: white;
@@ -66,4 +71,14 @@ border-radius: 5px;
 .chartwrap {
 border-left: 10px solid #f2f2f2;
 padding-left: 10px; 
+}
+
+@keyframes bounce { 
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+.ball {
+  animation: bounce 0.8s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }

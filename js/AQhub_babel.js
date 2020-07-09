@@ -118,7 +118,7 @@ function dataChange() {
   //document.querySelector("#NTA3").innerHTML = selectedName;
   document.querySelector("#tempVal").innerHTML = nSURFACETEMP + ' deg';
   document.querySelector("#greenVal").innerHTML = nGREENSPACE + '%';
-  document.querySelector("#hospVal").innerHTML = nHRI_HOSP_RATE + ' per 100,000';
+  document.querySelector("#hospVal").innerHTML = '<span style="font-weight:bold;color:#15607a">' + nHRI_HOSP_RATE + ' per 100,000</span>'
   document.querySelector("#hviVal").innerHTML = nHVI_RANK + ' out of 5';
   document.querySelector("#bpopVal").innerHTML = nPCT_BLACK_POP + '%';
   document.querySelector("#acVal").innerHTML = nPCT_HOUSEHOLDS_AC + '%';
