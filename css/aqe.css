@@ -81,3 +81,7 @@ padding-left: 10px;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
+
+html {
+  scroll-behavior: smooth;
+}
