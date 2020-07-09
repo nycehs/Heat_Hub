@@ -113,13 +113,13 @@ function dataChange() {
   nPOV_PCT = neighborhoodData[0].POV_PCT;  //pov  *
   nSURFACETEMP = neighborhoodData[0].SURFACETEMP;  //temp  *
 
-  document.querySelector("#NTA").innerHTML = '<h4><span style="font-weight:bold;color:#15607a">' + selectedName + '</span></h4>';
+  document.querySelector("#NTA").innerHTML = '<h4>' + selectedName + '</h4>';
   //document.querySelector("#NTA2").innerHTML = selectedName;
   //document.querySelector("#NTA3").innerHTML = selectedName;
-  document.querySelector("#tempVal").innerHTML = nSURFACETEMP + ' deg';
+  document.querySelector("#tempVal").innerHTML = nSURFACETEMP + '° F';
   document.querySelector("#greenVal").innerHTML = nGREENSPACE + '%';
-  document.querySelector("#hospVal").innerHTML = '<span style="font-weight:bold;color:#15607a">' + nHRI_HOSP_RATE + ' per 100,000</span>'
-  document.querySelector("#hviVal").innerHTML = nHVI_RANK + ' out of 5';
+  document.querySelector("#hospVal").innerHTML = nHRI_HOSP_RATE + ' per 100,000 people';
+  document.querySelector("#hviVal").innerHTML = '<h4>' + nHVI_RANK + ' out of 5</h4>';
   document.querySelector("#bpopVal").innerHTML = nPCT_BLACK_POP + '%';
   document.querySelector("#acVal").innerHTML = nPCT_HOUSEHOLDS_AC + '%';
   document.querySelector("#povVal").innerHTML = nPOV_PCT + '%';

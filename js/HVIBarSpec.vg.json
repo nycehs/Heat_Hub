@@ -53,9 +53,9 @@
           "update": {
             "fill": [{
                 "test": "datum.NTACODE==selectNTA",
-                "value": "#7FE5F0"
+                "value": "#007bff"
             },
-                {"value": "grey"}
+                {"value": "lightgrey"}
             ],
             "tooltip": {
               "signal": "{\"Heat Hospitalization Rate\": format(datum[\"HRI_HOSP_RATE\"], \".1f\"), \"Neighborhood\": ''+datum[\"NTANAME\"]}"

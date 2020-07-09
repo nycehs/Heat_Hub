@@ -126,13 +126,13 @@
             "stroke": [
                 {
                   "test": "datum.properties.NTACode==selectNTA",
-                  "value": "#7FE5F0"
+                  "value": "#007bff"
                 },
                 {"value": "white"}
               ],
             "fill": [{
               "test":"indata('NTAexclude','excludeList',datum.properties.NTACode)",
-              "value":"gray"
+              "value":"lightgray"
             },
             {"scale": "color", "field": "HVI_RANK"}],
             "strokeWidth": [
@@ -141,7 +141,7 @@
                 "value": 3
               },{
                 "test": "datum.properties.NTACode==selectNTA",
-                "value": 3
+                "value": 5
               },
               {"value": 0.5}
             ],
@@ -162,7 +162,7 @@
         "name": "color",
         "type": "ordinal",
         "domain": {"data": "data_0", "field": "HVI_RANK", "sort": true},
-        "range": {"scheme": "redpurple", "extent": [0, 1.25]},
+        "range": {"scheme": "browns", "extent": [0, 2]},
         "interpolate": "hcl"
       }
     ]
