@@ -10,6 +10,7 @@ var selectedName = '';
 
 var nCD = "";
 var nGREENSPACE = "";
+
 var nHRI_HOSP_RATE = "";
 var nHVI_RANK = "";
 var nNTACODE = "";
@@ -18,6 +19,12 @@ var nPCT_BLACK_POP = "";
 var nPCT_HOUSEHOLDS_AC = "";
 var nPOV_PCT = "";
 var nSURFACETEMP = "";
+
+// copy establishing variables for tertiles
+var nPOV_PCTTERT = "";
+var nGREENSPACETERT = "";
+var nPCT_HOUSEHOLDS_ACTERT = "";
+var nSURFACETEMPTERT = "";
 
 // these variables hold the ids of the divs to hold the small circle graphs
 var scLocTemp = "#tempTertile";
@@ -113,6 +120,16 @@ function dataChange() {
   nPOV_PCT = neighborhoodData[0].POV_PCT;  //pov  *
   nSURFACETEMP = neighborhoodData[0].SURFACETEMP;  //temp  *
 
+  //copy this but for our tertiles
+  nGREENSPACETERT = neighborhoodData[0].GREENSPACE_TERT; //GREENSPACETERTILE
+  nSURFACETEMPTERT = neighborhoodData[0].SURFACETEMP_TERT;
+  nPOV_PCTTERT = neighborhoodData[0].POV_TERT;
+  nPCT_HOUSEHOLDS_ACTERT = neighborhoodData[0].AC_TERT;
+
+  console.log(nPCT_HOUSEHOLDS_ACTERT);
+
+
+
   document.querySelector("#NTA").innerHTML = '<h4>' + selectedName + '</h4>';
   //document.querySelector("#NTA2").innerHTML = selectedName;
   //document.querySelector("#NTA3").innerHTML = selectedName;
@@ -123,6 +140,12 @@ function dataChange() {
   document.querySelector("#bpopVal").innerHTML = nPCT_BLACK_POP + '%';
   document.querySelector("#acVal").innerHTML = nPCT_HOUSEHOLDS_AC + '%';
   document.querySelector("#povVal").innerHTML = nPOV_PCT + '%';
+
+  //adding tertile delivery
+  document.querySelector("#tempTert").innerHTML = nSURFACETEMPTERT;
+  document.querySelector("#greenTert").innerHTML = nGREENSPACETERT;
+  document.querySelector("#povTert").innerHTML = nPOV_PCTTERT;
+  document.querySelector("#acTert").innerHTML = nPCT_HOUSEHOLDS_ACTERT;
 
   loadMap();
 

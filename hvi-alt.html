@@ -29,8 +29,11 @@
     <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/css/custom.css">
 
 
+
+
+
     <!--AQE styles-->
-    <link rel="stylesheet" href="css/aqe.css">
+    <link rel="stylesheet" href="css/explorer.css">
 
     <style>.background {fill: transparent; stroke: transparent !important;}</style>
 
@@ -231,15 +234,27 @@
                             </nav>
                         </div>
                     </div>
+                </div>
+        <div class="container">
+
+            <div class="row mt-2 fs-lg">
+                <div class="col">
+                    <h2>What neighborhoods are vulnerable to heat?</h2>
+                </div>
+            </div>
 
             <div class="row mt-2 fs-md">
-
-                <div class="col-lg-6 mx-auto">
-                    <h3>What makes you vulnerable to hot weather?</h3>
+                <div class="col-lg-6">
                     <p>Hot weather is dangerous. In New York City – and across the country – more people die from heat than from all other natural disasters combined. As our climate continues to warm, we expect more heat events that can put people’s lives at risk.
                     </p>
                     <p>In New York City, certain <strong>neighborhood characteristics can increase the risk</strong> of heat-related illness. We identified environmental and social factors that make some neighborhoods more susceptible to heat, and that drive disparities in heat-related illness.</p>
-                    <p>To view data on your neighborhood's characteristics, enter an address below. </p>
+                    <p>This tool can help drive neighborhood-level policies and programs that can protect people - sending resources to where they're needed the most.</p>
+                    <p>To view data on a neighborhood's characteristics, enter an address to the right. </p>
+                </div>
+
+                <div class="col-lg-6">
+
+
                                         <!-- <label for="addressInput">Enter your address:</label> -->
                                         <div class="srch input-group" role="search">
                                             <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
@@ -259,133 +274,203 @@
                                                 -->
                     
                                         </div> 
+                </div>
 
-                                        <div class="text-center pt-2 mt-2">
+            </div>
+
+
+            <div class="row mt-2 fs-md">
+                <div class="col-lg-6 mx-auto">
+                                        <div class="text-center pt-2 mt-3">
                                             <a href="#jumpto">
                                                 <i class="fas fa-arrow-circle-down center ball" style="font-size: 4rem"></i>
                                             </a>
                                         </div>
                 </div>
-            
             </div>
 
 
+            <div class="pt-1 sticky-top">
+            <div class="row mt-2 fs-md py-2" style="background-color: #dae0e5; border-radius: 5px;">
+                <div class="col-lg-6">
+                    <a name="jumpto"></a><div class="fs-md pb-1"><strong>Your neighborhood:</strong></div>
+                    <span id="NTA" class="badge badge-primary mb-0">No neighborhood selected. Enter an address above</span> 
+                    <p class="fs-sm"><em>This is a Neighborhood Tabulation Area. <a href="">Read about NTAs</a>.</em></p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fs-md pb-1"><strong>Heat vulnerability:</strong></div>
+                    <span id="hviVal" class="badge badge-primary h4 mb-0">No neighborhood selected. Enter an address above</span>
+                    <p class="fs-sm"><em>Neighborhoods are ranked from 1 (lowest risk) to 5 (highest risk).</em></p>
+                </div>
+            </div>
+        </div>
 
 
+            <div class="row mt-3">
+                <h3>What factors affect heat vulnerability?</h3>
+                <div class="fs-sm pb-4"><em>Neighborhoods are sorted into "tertiles" - the highest, middle, and lowest third based on your neighborhood's value for the factor. </em></div>
+            </div>
 
-            <div class="row align-items-start">
-                <div class="col-lg-5 ml-auto sticky-top pt-4 mt-2">
-                    <a name="jumpto"></a>
-                        <div class="lefterbar">
-                            <div class="fs-md pb-1"><strong>Your neighborhood:</strong></div>
-                            <span id="NTA" class="badge badge-primary">No neighborhood selected. Enter an address above</span> 
-                            <p class="fs-sm"><em>This is a Neighborhood Tabulation Area. <a href="">Read about NTAs</a>.</em></p>
-
+            <div class="row mt-2">
+                <div class="col-lg-6 px-0">
+                    <div class="row no-gutters border-bottom pb-1">
+                        <div class="col-3 fs-lg"><div class="fs-lg"><strong>Temperature</strong> </div></div>
+                        <div class="col-2 fs-lg"><span id="tempVal" class="badge badge-primary">XX° F</span></div>
+                        <div class="col-7 fs-lg">
+                            <span id="tempTert"><span class="badge badge-light">XXX than</span></span> 
+                            <span class="badge badge-light">NYC neighborhoods.</span>
                         </div>
-    
-                        <div class="lefterbar mt-4">
-                            <div class="fs-md pb-1"><strong>Heat vulnerability:</strong></div>
-                            <span id="hviVal" class="badge badge-primary h4">No neighborhood selected. Enter an address above</span>
-                            <p class="fs-sm"><em>Neighborhoods are ranked from 1 (lowest risk) to 5 (highest risk).</em></p>
-                        </div> 
+                    </div>
+                    <div class="row no-gutters py-1">
+                        <div class="col-12">
+                            <p><i class="far fa-question-circle"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2141,719b87,107,Summarize">Daytime summer surface temperature</a> is different from air temperature, and varies more by neighborhood: some neighborhoods are hotter than others. A higher surface temperature is associated with a higher risk of death from heat waves.
+                            </p>
+                        </div>
+                    </div>
 
 
+                    <div class="row no-gutters border-bottom mt-3 pb-1 fs-lg">
+                        <div class="col-3">
+                            <strong>Green space</strong> 
+                        </div>
+                        <div class="col-2">
+                            <span id="greenVal" class="badge badge-primary">XX%</span></div>
+                        <div class="col-7">
+                            <span id="greenTert"><span class="badge badge-light">XXX than</span></span>
+                            <span class="badge badge-light">NYC neighborhoods.</span>
+                        </div>
+                    </div>
+
+                    <div class="row no-gutters py-1">
+                        <div class="col-12">
+                            <p><i class="far fa-question-circle"></i>&nbsp;Green space is <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2157,719b87,104,Summarize">tree</a>, <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2143,719b87,107,Summarize">grass, or shrub cover</a>. Green space helps cool a neighborhood. Less green space in a neighborhood is associated with a greater risk of death during heat waves.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-lg-6 mr-auto pt-4 mt-2">
-                    <h4>What factors affect vulnerability to heat?</h4>
-                    <div class="row no-gutters">
-                        <div class="col-6 pr-1">
-                            <div class="lefterbar mt-2">
-                                <div class="border-bottom fs-md pb-1"><strong>Temperature</strong>: <span id="tempVal" class="badge badge-primary">XX° F</span></div>
-                                <p><a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2141,719b87,107,Summarize">Daytime summer surface temperature</a> varies by neighborhood: some neighborhoods are hotter than others. A higher surface temperature is associated with a higher risk of death from heat waves.
-                                </p>
-                            </div>
-
-
+                <div class="col-lg-6 pl-0">
+                    <div class="row no-gutters border-bottom pb-1">
+                        <div class="col-3">
+                            <div class="fs-lg"><strong>A/C</strong> </div>
                         </div>
+                        <div class="col-2 fs-lg"><span id="acVal" class="badge badge-primary">XX%</span></div>
 
-                        <div class="col-6">
-                            <div class="lefterbar mt-2">
-                                <div class="border-bottom fs-md pb-1"><strong>Green space</strong>: <span id="greenVal" class="badge badge-primary">XX%</span></div>
-                                <p>Green space is <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2157,719b87,104,Summarize">tree</a>, <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2143,719b87,107,Summarize">grass, or shrub cover</a>. Green space helps cool a neighborhood. Less green space in a neighborhood is associated with a greater risk of death during heat waves.
-                                </p>
-                            </div>
+                        <div class="col-7">
+                            <div class="fs-lg"><span id="acTert"><span class="badge badge-light">XXX than</span></span>
+                            <span class="badge badge-light">NYC neighborhoods.</span></div>
                         </div>
                     </div>
-
-                    <div class="row no-gutters">
-                        <div class="col-6 pr-1">
-                            <div class="lefterbar my-4">
-                                <div class="border-bottom fs-md pb-1"><strong>Air conditioning</strong>: <span id="acVal" class="badge badge-primary">XX%</span></div>
-                                <p>An air conditioner is as necessary during extreme heat as heating is during the winter. A neighborhood with a high percentage of <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2185,719b87,107,Summarize">households with air conditioners</a> means that more of its residents can be protected from extreme heat. </p>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="lefterbar mt-4">
-                                <div class="border-bottom fs-md pb-1"><strong>Poverty</strong>: <span id="povVal" class="badge badge-primary">XX%</span></div>
-                                <p><a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=103,4466a0,109,Summarize">Poverty</a> is a social factor that places people at risk of death during heat waves for many reasons.  One reason is that people living in poverty may be less likely to afford owning or using an air conditioner during heat waves.
-                                </p>
-                            </div>
+                    <div class="row no-gutters py-1">
+                        <div class="col">
+                            <p><i class="far fa-question-circle"></i>&nbsp;Air conditioning is as necessary during extreme heat as heating is in winter. A neighborhood with a high percentage of <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2185,719b87,107,Summarize">households with air conditioners</a> means that more of its residents can be protected from extreme heat. </p>
                         </div>
                     </div>
 
 
 
-                    
+                    <div class="row no-gutters border-bottom mt-3 pb-1 fs-lg">
+                        <div class="col-3">
+                           <strong>Poverty</strong> 
 
-                    
-
-                    
-                    <hr class="my-4 mx-6">
-
-
-
-                    <h4 class="mt-4">Heat-related hospitalizations</h4>
-                    <p>Heat stress happens when your body’s temperature increases quickly: The body can no longer control its temperature to cool itself down, which can quickly lead to death. Hospitalizations for heat-related illness are an indicator of serious heat stress.</p>
-                    <div class="mt-2">
-                        <div class="fs-md"><strong>Heat-related illness hospitalization rate</strong>: <span id="hospVal" class="badge badge-primary">XX per 100,000</span></div> 
-                            Citywide rate: <span class="badge badge-secondary">1.5 per 100,000</span>
-                
-                                        
-                                       
-                                        <div class="mt-2" style="height: 200px;" id="PMbar"></div>
-                
-                                        <div class="text-right fs-sm"> <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2410,4466a0,100,Summarize">See full data</a></div>
+                        </div>
+                        <div class="col-2">
+                            <span id="povVal" class="badge badge-primary">XX%</span>
                         </div>
 
-                        <hr class="my-4 mx-6">
+                        <div class="col-7">
+                           <span id="povTert"><span class="badge badge-light">XXX than</span></span> 
+                           <span class="badge badge-light">NYC neighborhoods.</span>
+                        </div>
+                    </div>
+                    <div class="row no-gutters py-1">
+                        <div class="col">
+                            <p><i class="far fa-question-circle"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=103,4466a0,109,Summarize">Poverty</a> is a social factor that places people at risk of death during heat waves for many reasons.  One reason is that people living in poverty may be less likely to afford owning or using an air conditioner during heat waves.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <h4 class="mt-4">Disparities in heat vulnerability and illness</h4>
+            <hr class="my-4 mx-6">
+
+
+            <div class="row mt-2">
+                <h4>Disparities in heat vulnerability and illness</h4>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-lg-6 px-0">
                     <p>Black New Yorkers suffer disproportionate health impacts from heat due to social and economic disparities. These disparities stem from structural racism, which includes neighborhood disinvestment, racist housing policies, fewer job opportunities and lower pay, and less access to high-quality education and health care.  </p>
                     <p>Overall, these systems limit access to resources that protect health. While many factors affect a neighborhood’s heat-related hospitalization rate, Black New Yorkers are subjected to higher rates of poverty and lower access to AC, green space, and neighborhood cooling resources. 
                     </p>
                     <p>As a result, neighborhoods with more Black residents are more at risk during extreme heat. Neighborhoods with a higher percentage of Black people are more likely to have higher rates of heat-related hospitalizations.
                     </p>
-                    <div>
-                    <p class="fs-md"><strong>Black Population</strong>: <span id="bpopVal" class="badge badge-primary">XX%</span> </p>
-                    <iframe title="" aria-label="chart" id="datawrapper-chart-E3CX1" src="https://datawrapper.dwcdn.net/E3CX1/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="450"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
-                    </script>
+                </div>
+                <div class="col-lg-6 pl-0">
+                    <strong>Black Population</strong>:  <span id="bpopVal" class="badge badge-primary">XX%</span>
+                    <br><br>
+                    INSERT DISPARITIES CHART HERE
+                </div>
+
+            </div>
+
+            <hr class="my-4 mx-6">
+
+            <div class="row mt-2">
+                <h4>Heat-related hospitalizations</h4>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-lg-6 pl-0 pr-1">
+                    <p>Heat stress happens when your body’s temperature increases quickly: The body can no longer control its temperature to cool itself down, which can quickly lead to death. Hospitalizations for heat-related illness are an indicator of serious heat stress.</p>
+                    <div class="row no-gutters mt-2">
+                        <div class="col-4">
+                            <div class="fs-md"><strong>Your neighborhood</strong> </div> 
+                            <div class="fs-sm"><strong>Citywide rate</strong></div>
+
+                        </div>
+
+                        <div class="col-2 mr-auto">
+                            <div class="fs-md"><span id="hospVal" class="badge badge-primary">XX per 100,000</span></div>
+                            <span class="badge badge-light">1.5 per 100,000</span>
+                        </div>
+
                     </div>
+                </div>
+                <div class="col-lg-6 px-0">
+                        <div style="height: 225px;" id="PMbar"></div>
 
-                    <hr class="my-4 mx-6">
+                        <div class="text-right fs-sm"> <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2410,4466a0,100,Summarize">See full data</a></div>
+                </div>
+            </div>
 
-                    <h4>The Heat Vulnerability Index</h4>
+            <hr class="my-4 mx-6">
+
+
+
+            <div class="row mt-2">
+                <h4>The Heat Vulnerability Index</h4>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-lg-6 pl-0">
                     <p>The Heat Vulnerability Index identifies neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
 
                     <p>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
                     </p>
 
                     <p>Differences in these risk factors across neighborhoods are rooted in past and present racism and as a result, neighborhoods with more Black residents are more at risk during extreme heat. </p>
-
-                        <div class="vis2" id="mapvis"></div>
-
-
-
+                </div>
+                <div class="col-lg-6">
+                    <div class="vis2" id="mapvis"></div>
 
                 </div>
+
             </div>
+
+
+
 
             <hr class="my-4 mx-6">
 
@@ -670,6 +755,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>    -->
 
+
+
+
   <!-- Google Translate -->
     <script>
         function googleTranslateElementInit() {
@@ -706,7 +794,7 @@
 
 
     <!--this is the AQE javascript-->
-    <script src='./js/AQhub_babel.js'></script>
+    <script src='./js/explorer_babel.js'></script>
 
 
 
