@@ -247,15 +247,17 @@
                 <div class="col-lg-6">
                     <p>Hot weather is dangerous. In New York City – and across the country – more people die from heat than from all other natural disasters combined. As our climate continues to warm, we expect more heat events that can put people’s lives at risk.
                     </p>
-                    <p>In New York City, certain <strong>neighborhood characteristics can increase the risk</strong> of death due to extreme heat. We identified environmental and social factors that make some neighborhoods more susceptible to heat, and that drive disparities in heat deaths.</p>
-                    <p>This tool can help drive neighborhood-level policies and programs that can protect people - sending resources to where they're needed the most.</p>
-                    <p>To view data on a neighborhood's characteristics, enter an address. </p><br><br>
+                    <p>In New York City, a neighborhood's <strong>environmental characteristics can increase its residents' risk</strong> of death due to extreme heat - and the risk is unfairly distributed. We identified environmental and social factors that associated with increased risk.</p>
+
+                    <p>Use this Heat Vulnerability Explorer to look up your neighborhood's heat vulnerability, and the neighborhood characteristics that affect it. This can help drive neighborhood-level policies and programs that can protect people - sending resources to where they're needed the most.</p>
+                    <p>To start, enter an address in the map. </p><br><br>
                 </div>
 
                 <div class="col-lg-6">
 
 
                                         <!-- <label for="addressInput">Enter your address:</label> -->
+                                        <div class="fs-sm"><em>Enter an address:</em></div>
                                         <div class="srch input-group" role="search">
                                             <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
                                         </div>
@@ -281,7 +283,7 @@
 
             <div class="row mt-2 fs-md">
                 <div class="col-lg-6 mx-auto">
-                                        <div class="text-center pt-2 mt-3">
+                                        <div class="text-center pt-2 mt-2">
                                             <a href="#jumpto">
                                                 <i class="fas fa-arrow-circle-down center ball" style="font-size: 4rem"></i>
                                             </a>
@@ -290,25 +292,43 @@
             </div>
 
 
-            <div class="pt-1 sticky-top">
-            <div class="row mt-2 fs-md py-2" style="background-color: #dae0e5; border-radius: 5px;">
-                <div class="col-lg-6">
-                    <a name="jumpto"></a><div class="fs-md pb-1"><strong>Your neighborhood:</strong></div>
+
+
+        <div class="row mt-1">
+            <a name="jumpto"></a><h3>The Heat Vulnerability Index</h3>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6 pl-0" style="margin-bottom:75px;">
+                <p>The Heat Vulnerability Index shows neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
+
+                <p>Neighborhoods are scored from <span style="font-weight: bold; color:#D18954"><i class="fas fa-square"></i>&nbsp;1 (lowest risk)</span> to <span style="font-weight: bold;color: #260929"><i class="fas fa-square"></i>&nbsp;5 (highest risk)</span>.  The neighborhood you selected is <span style="font-weight: bold; color: #007bff">outlined in blue</span>. Hover over the map to see each neighborhood's heat vulnerability score.</p>
+                    
+                <p>Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
+                </p>
+                <div class="fs-md pb-1"><strong>Your neighborhood:</strong></div>
                     <span id="NTA" class="badge badge-primary mb-0">No neighborhood selected. Enter an address above</span> 
-                    <p class="fs-sm"><em>This is a Neighborhood Tabulation Area. <a href="">Read about NTAs</a>.</em></p>
-                </div>
-                <div class="col-lg-6">
+                    <p class="fs-sm"><em>This is a Neighborhood Tabulation Area. <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Closerlook/geographies/index.html">Read about NTAs</a>.</em></p>
+
                     <div class="fs-md pb-1"><strong>Heat vulnerability:</strong></div>
                     <span id="hviVal" class="badge badge-primary h4 mb-0">No neighborhood selected. Enter an address above</span>
                     <p class="fs-sm"><em>Neighborhoods are ranked from 1 (lowest risk) to 5 (highest risk).</em></p>
-                </div>
+                
+                
+
+
             </div>
+            <div class="col-lg-6">
+                <div class="vis2" id="mapvis" style="margin-top:-75px"></div>
+
+            </div>
+
         </div>
 
 
+
             <div class="row mt-3">
-                <h3>What factors affect heat vulnerability?</h3>
-                <div class="fs-sm pb-4"><em>Neighborhoods are sorted into "tertiles" - the highest, middle, and lowest third based on your neighborhood's value for the factor. </em></div>
+                <h3>What factors affect heat vulnerability in your neighborhood?</h3>
             </div>
 
             <div class="row mt-2">
@@ -366,7 +386,7 @@
                 <div class="col-lg-6 pl-1">
                     <div class="row no-gutters pb-1 fs-lg mr-2 border-bottom">
                         <div class="col">
-                            <strong>Air Conditioning</strong> 
+                            <strong>Air conditioning</strong> 
                         </div>
                     </div>
                     
@@ -413,23 +433,24 @@
                 </div>
             </div>
 
-            <hr class="my-4 mx-6">
 
 
-            <div class="row mt-2">
+            <div class="row mt-4">
                 <h4>Racial disparities in heat vulnerability</h4>
             </div>
 
             <div class="row mt-2">
                 <div class="col-lg-6 px-0">
-                    <p>Neighborhoods with more Black residents are more at risk during extreme heat: Black people die of heat-related illness at a disproportionately high rate.
+                    <p>In NYC, Black people die of heat-related illness at a disproportionately high rate. Because of this, neighborhoods with more Black residents are more greatly impacted by extreme heat.
                     </p>
                     <p>Black New Yorkers suffer these disproportionate health impacts from heat due to social and economic disparities. These disparities stem from structural racism, which includes neighborhood disinvestment, racist housing policies, fewer job opportunities and lower pay, and less access to high-quality education and health care.  </p>
-                    <p>Overall, these systems limit access to resources that protect health. While many factors affect a neighborhood’s heat-related hospitalization rate, Black New Yorkers are subjected to higher rates of poverty and lower access to AC, green space, and neighborhood cooling resources. 
+                    <p>Overall, these systems limit access to resources that protect health. While many factors affect a neighborhood’s heat risk, Black New Yorkers are subjected to higher rates of poverty and lower access to air conditioning, green space, and neighborhood cooling resources. 
                     </p>
-                    <div class="border-bottom py-2">
+
+                    <div class="border-bottom py-2 d-none">
                     <strong>Your neighborhood's Black population</strong>:  <span id="bpopVal" class="badge badge-primary">XX%</span>
                     </div>
+
 
                 </div>
                 <div class="col-lg-6 pl-2">
@@ -476,73 +497,48 @@
 
 
 
-            <div class="row mt-2">
-                <h4>The Heat Vulnerability Index</h4>
+
+
+
+
+        <div class="row mt-6 fs-sm">
+            <div class="col-lg-3 ml-auto mt-2">
+                <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
+                    <p> <strong>More about heat and health:</strong><br>
+
+                        
+         <i class="fas fa-chart-bar"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/HeatHub/index.html">Climate and Health data</a><br>
+         <i class="fas fa-chart-bar"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/VisualizationData.aspx?id=2191,719b87,107,Summarize">Heat Vulnerability by CD</a><br>
+             <i class="fas fa-book-open"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Closerlook/heat/Index.html">Protecting New Yorkers from extreme heat</a><br>
+             <i class="fas fa-chart-line"></i>&nbsp;<a href="syndromic.html">Real-time Heat-related Illness data</a></p>
+                </div>
             </div>
 
-            <div class="row mt-2">
-                <div class="col-lg-6 pl-0" style="margin-bottom:75px;">
-                    <p>The Heat Vulnerability Index identifies neighborhoods whose residents are more at risk for dying during and immediately following extreme heat. It uses a statistical model to summarize the most important social and environmental factors that contribute to neighborhood heat risk.</p>
+            <div class="col-lg-3 mr-auto mt-2">
+                
 
-                    <p>Neighborhoods are scored from 1 (lowest risk) to 5 (highest risk). Remember, all neighborhoods have residents at risk for heat illness and death.  A neighborhood with low vulnerability does not mean no risk.
-                    </p>
-
-                    <p>Differences in these risk factors across neighborhoods are rooted in past and present racism and as a result, neighborhoods with more Black residents are more at risk during extreme heat. </p>
+                <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
+                    <p>In NYC, an <strong>extreme heat event</strong> is 2 or more days with a heat index reaching 95 °F, or 1 or more days reaching 100 °F.</p>
+                    <p>To learn more about heat and health, visit <a href="https://www1.nyc.gov/site/doh/health/emergency-preparedness/emergencies-extreme-weather-heat.page">Extreme Heat and Health</a>. To stay safe in the heat, visit <a href="https://www1.nyc.gov/assets/em/html/beat-the-heat/beattheheat.html">Beat the Heat</a>.</p>
                 </div>
-                <div class="col-lg-6">
-                    <div class="vis2" id="mapvis" style="margin-top:-75px"></div>
-
-                </div>
-
             </div>
+        </div>
 
 
 
 
-            <hr class="my-4 mx-6">
+            <div class="row mt-2">
 
+                <div class="col-lg-6 mx-auto">
 
-            <div class="row mt-6">
-
-                <div class="col-lg-7 mx-auto mt-2">
-
-                    <strong>More about heat-related illness and heat vulnerability</strong>
-                    <ul>
-                        <li><i class="fas fa-chart-bar"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/HeatHub/index.html">Climate and Health data</a></li>
-                        <li><i class="fas fa-book-open"></i>&nbsp;<a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Closerlook/heat/Index.html">Protecting New Yorkers from extreme heat</a></li>
-                        <li><i class="fas fa-chart-line"></i>&nbsp;<a href="syndromic.html">Real-time Heat-related Illness data</a></li>
-                    </ul>
-
-                    <div class="mt-5" style="border-radius: 5px;">
+                    <div style="border-radius: 5px;">
                 
                         <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/?unit=us" data-label_1="NEW YORK CITY" data-label_2="WEATHER" data-theme="original" >NEW YORK CITY WEATHER</a>
                         <script>
                         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
                         </script>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
-                                <p>In NYC, an <strong>extreme heat event</strong> is two or more days with a heat index reaching 95 °F, or one or more days reaching 100 °F.</div>
                         </div>
-                        <div class="col-6">
-                            <div class="mt-2" style="background-color: #dcdcdc; padding: 7px 7px; border-radius: 5px;">
-                                To learn more about heat and health, visit <a href="https://www1.nyc.gov/site/doh/health/emergency-preparedness/emergencies-extreme-weather-heat.page">Extreme Heat and Health</a>. To stay safe in the heat, visit <a href="https://www1.nyc.gov/assets/em/html/beat-the-heat/beattheheat.html">Beat the Heat</a>.</p>
-                           </div>
-                        </div>
-                    </div>
-                        
-        
-
-
-            
-        
-        
-        
-                        </div>
-
-
-
 
                 </div>
 

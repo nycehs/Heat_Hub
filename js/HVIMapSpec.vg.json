@@ -162,7 +162,7 @@
         "name": "color",
         "type": "ordinal",
         "domain": {"data": "data_0", "field": "HVI_RANK", "sort": true},
-        "range": {"scheme": "browns", "extent": [0, 2]},
+        "range": {"scheme": "browns", "extent": [0, 2.5]},
         "interpolate": "hcl"
       }
     ]
